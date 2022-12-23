@@ -125,10 +125,10 @@ public class StepDef {
     @When("Select from left side filter two elements")
     public void Select_from_filters() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement HeadPhones = driver.findElement(By.xpath("//*[@id=\"grid-main-container\"]/div[2]/span[3]/span/ul/li[20]/label/input"));
+        WebElement HeadPhones = driver.findElement(By.xpath("//label[contains(.,'Headphones')]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", HeadPhones);
         HeadPhones.click();
-        WebElement grocery = driver.findElement(By.xpath("//*[@id=\"grid-main-container\"]/div[2]/span[3]/span/ul/li[18]/label/input"));
+        WebElement grocery = driver.findElement(By.xpath("(//span[contains(.,'Grocery')])[3]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", grocery);
         grocery.click();
 
@@ -139,7 +139,7 @@ public class StepDef {
     @And("User Select discount 10% off or more")
     public void Select_discount() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement discount = driver.findElement(By.xpath("(//span[contains(.,'10% off or more')])[3]"));
+        WebElement discount = driver.findElement(By.xpath("(//span[contains(.,'10% off or more')])[2]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", discount);
         discount.click();
     }
@@ -147,13 +147,13 @@ public class StepDef {
     @And("User go to fourth page and select any item and add it to the cart")
     public void go_to_fourth_page_select_item() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        WebElement third = driver.findElement(By.xpath("//*[@id=\"slot-15\"]/div/div/div[3]/div/ul/li[4]/a"));
+        WebElement third = driver.findElement(By.xpath("/html/body/div[1]/div[21]/div/div/div/div[3]/div/ul/li[4]/a"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", third);
         third.click(); //Go to third page
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        WebElement fourth = driver.findElement(By.xpath("//*[@id=\"slot-15\"]/div/div/div[3]/div/ul/li[5]/a"));
+        WebElement fourth = driver.findElement(By.xpath("/html/body/div[1]/div[21]/div/div/div/div[3]/div/ul/li[5]/a"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", fourth);
         fourth.click(); //Go to fourth page
 
@@ -161,7 +161,7 @@ public class StepDef {
 //        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", selectItem);
 //        selectItem.click(); //Click on selected item
 
-        WebElement Headphone = driver.findElement(By.xpath("//*[@id=\"grid-main-container\"]/div[3]/div/div[17]/div/div/a[1]/div/div/img"));
+        WebElement Headphone = driver.findElement(By.xpath("(//img[contains(@src,'.jpg')])[10]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Headphone);
         Headphone.click();//Select item
         Thread.sleep(1000);
@@ -197,7 +197,7 @@ public class StepDef {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 //    WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_mainContent_btn_FindFlights")));
         js.executeScript("arguments[0].value = arguments[1]",
-                driver.findElement(By.id("txtJourneyDate")), "30/09/2022");
+                driver.findElement(By.id("txtJourneyDate")), "30/09/2023");
 
 //    WebElement day = driver.findElement(By.xpath("//a[@class='ui-state-default'][contains(.,'30')"));
 //    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", day);
